@@ -6,70 +6,75 @@ $cars = [
     
     ['id' => '1',
     'model' => 'Kia',
-    'country' => 'Korea',],
+    'country' => 'Korea',
+    ],
     ['id' => '2',
     'model' => 'Hyundai',
-    'country' => 'Korea',],
+    'country' => 'Korea',
+    ],
     ['id' => '3',
     'model' => 'Bmw',
-    'country' => 'Germany',],
+    'country' => 'Germany',
+    ],
     ['id' => '4',
     'model' => 'Mercedes',
-    'country' => 'Germany',],
+    'country' => 'Germany',
+    ],
     ['id' => '5',
     'model' => 'Wolkswagen',
-    'country' => 'Germany',],
+    'country' => 'Germany',
+    ],
     ['id' => '6',
     'model' => 'Renault',
-    'country' => 'France',],
+    'country' => 'France',
+    ],
     ['id' => '7',
     'model' => 'Chevrolet',
-    'country' => 'USA',],
+    'country' => 'USA',
+    ],
     ['id' => '8',
     'model' => 'Bentley',
-    'country' => 'Great Britain',],
+    'country' => 'Great Britain',
+    ],
+];
+$flag = [
     [
         'parent_id' => 'Korea',
-        'flag' => 'korea_flag',
-        ],
-        [
-        'parent_id' => 'Germany',
-        'flag' => 'germany_flag',
-        ],
-        [
-        'parent_id' => 'France',
-        'flag' => 'france_flag',
-                ],
-        [
-        'parent_id' => 'USA',
-        'flag' => 'Usa_flag',
-                    ],
-        [
-        'parent_id' => 'USA',
-        'flag' => 'Usa_flag',
-            ],
-];
+           'flag' => 'korea_flag',
+       ],
+       [
+       'parent_id' => 'Germany',
+       'flag' => 'germany_flag',
+       ],
+       [
+       'parent_id' => 'France',
+       'flag' => 'france_flag',
+       ],
+       [
+       'parent_id' => 'USA',
+       'flag' => 'Usa_flag',
+       ],
+       [
+       'parent_id' => 'USA',
+       'flag' => 'Usa_flag',
+       ],
+    ];
+ $Country = function($cars, $firstname = 0){
+    foreach($cars as $key => $value){
+        if($firstname == $value['model']){
+            return $value['country'];
+        }
+    }
+};
 
+$flagPrin = function($data, $Country){
+    foreach($data as $key => $value){
+        if($Country == $value['parent_id']){
+            return $value['flag'];
+        }
+    }
+};
 
-    function Cars($cars, $firstname = 0){
-        foreach($cars as $key => $value){
-            if($firstname == $value['model']){
-                return $value['country'];
-                Cars($cars, $value['id']);
-            }
-        };
-       
-    };
-    function Country($cars, $firstname = 0){
-        foreach($cars as $key => $value){
-            if($firstname == $value['parent_id']){
-                return $value['flag'];
-                Country($cars, $value['id']);
-            }
-        };
-       
-    };
-print_r(Cars($cars));
-print_r(Country($cars));
+print_r($flagPrin($flag,$Country($cars, $firstname)));
     
 ?>
